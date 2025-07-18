@@ -1,6 +1,6 @@
 # AlertSenseAI
 This repo will deal with Infra/devops process optimisation using neural network..
-
+```
 # AlertSenseAI MVP - Neural Network Alert Intelligence with Cost Optimization
 
 # Directory structure:
@@ -16,3 +16,4 @@ This repo will deal with Infra/devops process optimisation using neural network.
 # │   └── cost_helpers.py
 # ├── app.py
 # └── requirements.txt
+```
