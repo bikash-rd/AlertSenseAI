@@ -1,0 +1,59 @@
+name: Simple CI-CD
+
+on:
+  workflow_dispatch:
+
+    inputs:
+
+      environment:
+        description: "Environment"
+        required: true
+        default: "dev"
+
+      version:
+        description: "Application Version"
+        required: true
+        default: "1.0"
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Print Parameters
+        run: |
+          echo "Environment: ${{ github.event.inputs.environment }}"
+          echo "Version: ${{ github.event.inputs.version }}"
+
+      - name: Create Build File
+        run: |
+          mkdir build
+          echo "Application Build" > build/app.txt
+          echo "Version: ${{ github.event.inputs.version }}" >> build/app.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-build
+          path: build/app.txt
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: app-build
+          path: downloaded
+
+      - name: Display File
+        run: |
+          cat downloaded/app.txt
