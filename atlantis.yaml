@@ -1,0 +1,9 @@
+version: 3
+projects:
+  - name: vpc
+    dir: terraform-aws/modules/network/vpc
+    workspace: default
+    autoplan:
+      when_modified:
+        - "terraform-aws/modules/network/vpc/*.tf"
+      enabled: true
