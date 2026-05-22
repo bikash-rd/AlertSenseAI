@@ -1,0 +1,9 @@
+version: 3
+projects:
+  - name: vpc
+    dir: modules/network/vpc
+    workspace: default
+    autoplan:
+      when_modified:
+        - "modules/network/vpc/*.tf"
+      enabled: true
