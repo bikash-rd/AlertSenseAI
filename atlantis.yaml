@@ -5,5 +5,5 @@ projects:
     workspace: default
     autoplan:
       when_modified:
-        - "terraform-aws/modules/network/vpc/*.tf"
+        - "**/*.tf"
       enabled: true
